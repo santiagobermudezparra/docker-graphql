@@ -13,26 +13,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
-    - name: Checkout code
+    - name: checkout code
       uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-        
+      with: 
+        fetch-depth : 0
+
+
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        echo "Starting Process"
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+        echo "Finishing Process"
+     
+    
+    # - name: Checkout code
+    #   uses: actions/checkout@v3
+    #   with:
+    #     fetch-depth: 0
+        
+    # - name: Docker login
+    #   env:
+    #     DOCKER_USER: ${{secrets.DOCKER_USER}}
+    #     DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    #   run: |
+    #     docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       
         
-    - name: Build the Docker image
-      run: |
-        docker build -t  xxwataryxx/docker-graphql:0.0.1 .
+    # - name: Build the Docker image
+    #   run: |
+    #     docker build -t  xxwataryxx/docker-graphql:0.0.1 .
         
         
-    - name: Push the Docker image
-      run: |
-        docker push xxwataryxx/docker-graphql:0.0.1
+    # - name: Push the Docker image
+    #   run: |
+    #     docker push xxwataryxx/docker-graphql:0.0.1
       
