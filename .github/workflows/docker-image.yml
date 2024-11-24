@@ -17,8 +17,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
-
-
+    
     - name: Git Semantic Version
       uses: PaulHatch/semantic-version@v4.0.3
       with:
@@ -39,13 +38,13 @@ jobs:
       env:
         NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        docker build -t xxwataryxx/docker-graphql:$NEW_VERSION .
-        docker build -t xxwataryxx/docker-graphql:latest .
+        docker build -t xwataryx/docker-graphql:$NEW_VERSION .
+        docker build -t xwataryx/docker-graphql:latest .
 
         
     - name: Push Docker Image
       env:
         NEW_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        docker push xxwataryxx/docker-graphql:$NEW_VERSION
-        docker push xxwataryxx/docker-graphql:latest
+        docker push xwataryx/docker-graphql:$NEW_VERSION
+        docker push xwataryx/docker-graphql:latest
